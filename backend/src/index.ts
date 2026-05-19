@@ -11,8 +11,8 @@ import { errorHandler } from "./middlewares/errorHandler.middleware";
 import { asyncHandler } from "./middlewares/asyncHandler.middleware";
 import { connectDatabase } from "./config/database.config";
 import { getAuth } from "./lib/auth";
-// import routes from "./routes"
-// import webhookRoutes from "./routes/webhook.route";
+import routes from "./routes"
+import webhookRoutes from "./routes/webhook.route";
 
 
 
@@ -31,7 +31,7 @@ app.all("/api/auth/*splat", (req, res) => {
   return toNodeHandler(auth)(req, res);
 });
 
-// app.use("/api/webhook", webhookRoutes)
+app.use("/api/webhook", webhookRoutes)
 
 app.use(express.json({ limit: "10mb" }))
 app.use(cookieParser())
@@ -45,19 +45,19 @@ app.get("/health", asyncHandler(async (req: Request, res: Response) => {
 
 }))
 
-// app.use("/api", routes)
+app.use("/api", routes)
 
-// if (Env.NODE_ENV === "production") {
-//   const clientPath = path.resolve(__dirname, "../../client/dist");
+if (Env.NODE_ENV === "production") {
+  const clientPath = path.resolve(__dirname, "../../client/dist");
 
-//   //Serve static files
-//   app.use(express.static(clientPath));
+  //Serve static files
+  app.use(express.static(clientPath));
 
-//   // Serve index.html for all non-API routes (SPA fallback)
-//   app.get(/^(?!\/api).*/, (req: Request, res: Response) => {
-//     res.sendFile(path.join(clientPath, "index.html"));
-//   });
-// }
+  // Serve index.html for all non-API routes (SPA fallback)
+  app.get(/^(?!\/api).*/, (req: Request, res: Response) => {
+    res.sendFile(path.join(clientPath, "index.html"));
+  });
+}
 
 app.use(errorHandler)
 
