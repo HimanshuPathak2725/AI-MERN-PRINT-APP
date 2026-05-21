@@ -1,14 +1,13 @@
+import { AccountView } from "@daveyplate/better-auth-ui"
+import { useLocation } from "react-router-dom"
 
 
 export default function SettingPage() {
-    // const location = useLocation()
-    // const currentPath = location.pathname.split('/').pop() || 'account'
+  const { pathname } = useLocation()
 
-    return (
-        <main className="container p-4 md:p-6">
-            {/* <AccountView path={currentPath} /> */}
-
-            Setting Page
-        </main>
-    )
+  return (
+    <main className="container p-4 md:p-6">
+      <AccountView pathname={pathname} />
+    </main>
+  )
 }

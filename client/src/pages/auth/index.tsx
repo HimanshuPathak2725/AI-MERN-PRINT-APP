@@ -1,7 +1,11 @@
 import Logo from "@/components/logo"
 
+import { useLocation } from "react-router-dom"
+import { AuthView } from "@daveyplate/better-auth-ui"
+
+
 export default function AuthPage() {
-  //const { pathname } = useParams()
+  const { pathname } = useLocation()
 
   return (
     <main className="container h-screen mx-auto flex grow flex-col items-center
@@ -10,9 +14,8 @@ export default function AuthPage() {
         <Logo className="text-2xl" />
       </div>
 
-      Auth Page
-      {/* <AuthView
-        pathname={pathname} /> */}
+      <AuthView pathname={pathname} />
+
     </main>
   )
 }
