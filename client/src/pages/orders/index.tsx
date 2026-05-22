@@ -2,90 +2,17 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
+import { getUserOrders } from "@/lib/api";
+import { GetUserOrdersResponse } from "@/types/order";
 
 const OrdersPage = () => {
-  // const { data, isLoading } = useQuery<GetUserOrdersResponse>({
-  //   queryKey: ["orders"],
-  //   queryFn: getUserOrders,
-  // });
+  const { data, isLoading } = useQuery<GetUserOrdersResponse>({
+    queryKey: ["orders"],
+    queryFn: getUserOrders,
+  });
 
-  const isLoading = false
-  const orders = [
-    {
-      _id: "1",
-      title: "T-Shirt",
-      description: "100% Cotton",
-      sellingPrice: "19.99",
-      colorId: {
-        name: "Black",
-        color: "#000000"
-      },
-      listingId: {
-        artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Mug",
-        slug: "t-shirt",
-      },
-      customerName: "John Doe",
-      customerEmail: "john@example.com",
-      size: "M",
-      status: "pending",
-    },
-    {
-      _id: "2",
-      title: "Hoodie",
-      description: "80% Cotton, 20% Polyester",
-      sellingPrice: "29.99",
-      colorId: {
-        name: "Black",
-        color: "#000000"
-      },
-      customerName: "John Doe",
-      customerEmail: "john@example.com",
-      size: "M",
-      status: "pending",
-      listingId: {
-        artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Phone+Case",
-        slug: "hoodie",
-      },
-    },
-    {
-      _id: "3",
-      title: "Big Bear tee",
-      description: "100% Cotton",
-      sellingPrice: "19.99",
-      colorId: {
-        name: "Black",
-        color: "#000000"
-      },
-      customerName: "John Doe",
-      customerEmail: "john@example.com",
-      size: "M",
-      status: "pending",
-      listingId: {
-        artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Sticker",
-        slug: "big-bear-tee",
-      },
-    },
-    {
-      _id: "4",
-      title: "Cave man Hoodie",
-      description: "80% Cotton, 20% Polyester",
-      sellingPrice: "29.99",
-      colorId: {
-        name: "White",
-        color: "#fff"
-      },
-      customerName: "John Doe",
-      customerEmail: "john@example.com",
-      size: "M",
-      status: "pending",
-      listingId: {
-        artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Poster",
-        slug: "cave-man-hoodie",
-      },
-    },
-  ] as any;
-
-
+  const orders = data?.orders ?? [];
 
   return (
     <div className="min-h-screen w-full">

@@ -5,46 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Link2 } from "lucide-react";
 
 const ListingsPage = () => {
-  // const { data, isLoading } = useQuery({
-  //   queryKey: ["listings"],
-  //   queryFn: getListingQueryFn,
-  // });
+  const { data: listingData, isLoading } = useQuery({
+    queryKey: ["listings"],
+    queryFn: getListingQueryFn,
+  });
 
-  const isLoading = false
-  const listings = [
-    {
-      _id: "1",
-      title: "T-Shirt",
-      description: "100% Cotton",
-      sellingPrice: "19.99",
-      artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Mug",
-      slug: "t-shirt",
-    },
-    {
-      _id: "2",
-      title: "Hoodie",
-      description: "80% Cotton, 20% Polyester",
-      sellingPrice: "29.99",
-      artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Phone+Case",
-      slug: "hoodie",
-    },
-    {
-      _id: "3",
-      title: "Big Bear tee",
-      description: "100% Cotton",
-      sellingPrice: "19.99",
-      artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Sticker",
-      slug: "big-bear-tee",
-    },
-    {
-      _id: "4",
-      title: "Cave man Hoodie",
-      description: "80% Cotton, 20% Polyester",
-      sellingPrice: "29.99",
-      artworkUrl: "https://placehold.co/300x300/f3f4f6/9ca3af?text=Poster",
-      slug: "cave-man-hoodie",
-    },
-  ] as any;
+  const listings = listingData?.listings ?? []
+
 
   return (
     <div className="min-h-screen w-full">

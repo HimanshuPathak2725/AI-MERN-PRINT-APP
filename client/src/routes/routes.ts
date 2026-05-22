@@ -7,43 +7,43 @@ import OrdersPage from "@/pages/orders";
 
 
 export const AUTH_ROUTES = {
-    SIGN_IN: '/auth/sign-in',
-    SIGN_UP: '/auth/sign-up',
+  SIGN_IN: '/auth/sign-in',
+  SIGN_UP: '/auth/sign-up',
 };
 
 export const PROTECTED_ROUTES = {
-    HOME: '/',
-    DESIGN: '/design/:product_id',
-    LISTINGS: '/listings',
-    ORDERS: '/orders',
+  HOME: '/',
+  DESIGN: '/design/:product_id',
+  LISTINGS: '/listings',
+  ORDERS: '/orders',
 };
 
 export const publicRoutesPaths = [
-    {
-        path: '/listing/:slug',
-        element: SinglelistingPage,
-    },
-    {
-        path: '/thank-you',
-        element: ThankYouPage,
-    }
+  {
+    path: '/listing/:slug',
+    element: SinglelistingPage,
+  },
+  {
+    path: '/thank-you',
+    element: ThankYouPage,
+  }
 ]
 
 export const protectedRoutesPaths = [
-    {
-        path: PROTECTED_ROUTES.HOME,
-        element: HomePage,
-    },
-    // {
-    //     path: PROTECTED_ROUTES.DESIGN,
-    //     element: DesignPage,
-    // },
-    {
-        path: PROTECTED_ROUTES.LISTINGS,
-        element: ListingsPage,
-    },
-    {
-        path: PROTECTED_ROUTES.ORDERS,
-        element: OrdersPage,
-    },
+  {
+    path: PROTECTED_ROUTES.HOME,
+    element: HomePage,
+  },
+  {
+    path: PROTECTED_ROUTES.DESIGN,
+    element: DesignPage,
+  },
+  {
+    path: PROTECTED_ROUTES.LISTINGS,
+    element: ListingsPage,
+  },
+  {
+    path: PROTECTED_ROUTES.ORDERS,
+    element: OrdersPage,
+  },
 ];

@@ -22,6 +22,11 @@ export const getProducts = async (): Promise<GetAllProductsResponse> => {
   return response.data;
 };
 
+export const getListingQueryFn = async () => {
+  const response = await API.get(`/listing/all`);
+  return response.data;
+}
+
 export const getProductTemplateById = async (productId: string): Promise<ProductTemplateResponse> => {
   const response = await API.get(`/product/${productId}`);
   return response.data;
@@ -37,21 +42,17 @@ export const generateArtworkMutationFn = async (prompt: string): Promise<{ artwo
   return response.data;
 }
 
-export const getListingQueryFn = async () => {
-  const response = await API.get(`/listing/all`);
-  return response.data;
-}
 
 export const getListingBySlugQueryFn = async (slug: string): Promise<GetListingBySlugResponse> => {
   const response = await API.get(`/listing/${slug}`);
   return response.data;
 }
 
-export const createCheckoutSession = async (data: CreateOrderType): Promise<{
+export const createOrderSession = async (data: CreateOrderType): Promise<{
   message: string,
   url: string
 }> => {
-  const response = await API.post(`/order/checkout`, data);
+  const response = await API.post(`/order/create`, data);
   return response.data;
 }
 

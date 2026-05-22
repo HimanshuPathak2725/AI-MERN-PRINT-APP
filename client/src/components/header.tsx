@@ -1,3 +1,4 @@
+import { UserButton } from "@daveyplate/better-auth-ui"
 import { SidebarTrigger } from "./ui/sidebar"
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
                     <SidebarTrigger />
                 </div>
 
-                {/* <UserButton
+                <UserButton
                     className="bg-sidebar!"
 
                     classNames={{
@@ -24,7 +25,7 @@ const Header = () => {
                         },
                     }}
 
-                /> */}
+                />
             </div>
         </div>
     )
